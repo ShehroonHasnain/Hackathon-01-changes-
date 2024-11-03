@@ -1,0 +1,75 @@
+.modalBackground {
+    position: fixed;
+    background-color: black;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    opacity: 0.9;
+  }
+  
+  .modalContainer {
+    background-color: white;
+    box-shadow: 0px 0px 0px #888;
+    padding: 10px;
+    border-radius: 10px;
+    /* height: 300px; */
+    width: 60%;
+    height: auto;
+  }
+  .userProfile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    gap :20px;
+    }
+    .userProfile img{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+    .userProfile span p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .simple-btn {
+        padding: 10px 20px;
+        border: none;
+        /* background-color: #626663; */
+        background-color: rgb(66, 66, 239);
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 20%;
+    
+      }
+      
+      .simple-btn:hover {
+        background-color: #ffffff;
+        border: #333 solid;
+        color: #333;
+      }
+      .simple-btn-o{
+        margin: 10px;
+        padding: 10px 20px;
+        border: none;
+        /* background-color: #626663; */
+        background-color: rgb(255, 100, 100);
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 20%;
+      }
+      .simple-btn-o:hover {
+        background-color: #ffffff;
+        border: #333 solid;
+        color: #333;
+      }
