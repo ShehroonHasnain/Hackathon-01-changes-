@@ -47,9 +47,11 @@ export const createComment = createAsyncThunk(
                 userProfileURL:comment.userProfileURL,
                 content: comment.content,
                 createAt: comment.createdAt,
-                noteUId:comment.noteUId
+                // noteUId:comment.noteUid
                 
             }
+            console.log('comment in acction',updatedcomment);
+            
 
             const collectionRef = collection(db, "comments")
             const response = await addDoc(collectionRef, updatedcomment)

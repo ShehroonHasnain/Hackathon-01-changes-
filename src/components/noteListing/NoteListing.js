@@ -9,7 +9,7 @@ export default function NoteListing() {
   const user = useSelector(store => store.authSlice.user)
 
 
-  console.log('user details', user);
+  // console.log('user details', user);
   const dispatch = useDispatch()
   useEffect(() => {
 
@@ -72,10 +72,10 @@ const CommentHandler =()=>{
                 </div>
                 <div>
                   { commentState && <CommentsPopup id={note?.id} note={note} commentState={commentState} setCommentState={setCommentState} />}
-                  <button onClick={CommentHandler}> Comments </button>
+                  <button onClick={CommentHandler} className='comment-cle'> Comments </button>
                  
                 </div>
-                  
+                  <hr style={{border:"1px solid black"}}/>
                   
               <div className='btn-cl'> 
                 <button className='del-btn' onClick={() => handleDelete(note.id, note.uid)}>delete</button>

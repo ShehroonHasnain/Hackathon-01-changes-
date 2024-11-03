@@ -36,7 +36,7 @@ export default function Signup() {
       address,
       gender
     }
-    console.log("Signup clicked", user);
+    // console.log("Signup clicked", user);
 
     // validate
     let data = {

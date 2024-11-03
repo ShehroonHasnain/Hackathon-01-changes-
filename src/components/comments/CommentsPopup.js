@@ -12,9 +12,7 @@ const [content, setContent] = useState("");
 
 const dispatch = useDispatch()
   useEffect(() => {
-
     dispatch(getComments())
-
   }, [])
 
   //handle to delete post
@@ -66,7 +64,7 @@ const dispatch = useDispatch()
           </p>
         </span>
         <div><p>{comment?.content}</p></div>
-        <button onClick={handleDelete}>del</button>
+        <button onClick={()=>handleDelete(comment?.id)} className='del-simple-btn'>del</button>
         </div>
 
     )

@@ -73,3 +73,16 @@
         border: #333 solid;
         color: #333;
       }
+      .del-simple-btn{
+        height: 20px;
+        width: 30px;
+        background-color: rgb(255, 100, 100);
+        border: none;
+        color: #ffffff;
+        border-radius: 2px;
+      }
+      .del-simple-btn:hover{
+        color: #333;
+        background-color: #ffffff;
+        border: 1px solid  #333;
+      }

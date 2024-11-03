@@ -13,10 +13,10 @@ export default function CreateNotes() {
     const [file, setFile] = useState('')
 
     const note = useSelector(state => state.noteSlice.updateNote)
-    console.log('note',note);
+    // console.log('note',note);
 
     const user = useSelector(state => state.authSlice.user)
-    console.log('user in createNote', user);
+    // console.log('user in createNote', user);
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -65,7 +65,7 @@ export default function CreateNotes() {
             subject,
             file,
         }
-        console.log('data', data);
+        // console.log('data', data);
         try {
             const response = await CreateNotesSchema.validate(data)
             if (response) {
@@ -98,7 +98,7 @@ export default function CreateNotes() {
     
  <div className='createpost-container'>
                 <div className="create-post-container">
-                    <h2>Create Post</h2>
+                    <h2>Create Notes</h2>
                     <div className="create-post-form">
 
                         <div className="form-group">
@@ -118,7 +118,7 @@ export default function CreateNotes() {
                             <input onChange={changeImage} type="file" id="file" />
                         </div>
                         <div className='btn-class'>{loading ? <p>Loading...</p> :
-                            <button onClick={createNoteHandler} className="submit-button">{note ? "Update Post" : "Create Post"}</button>}
+                            <button onClick={createNoteHandler} className="submit-button">{note ? "Update Note" : "Create Note"}</button>}
                             </div>
                     </div>
                 </div>
