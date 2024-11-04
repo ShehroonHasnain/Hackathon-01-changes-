@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreateNotesSchema } from './CreateNotesSchema';
 import { createNote, updateNote } from '../../redux/slices/noteSlice';
+import { updateNoteSchema } from './CreateNotesSchema';
 import "./CreateNotes.css"
 
 export default function CreateNotes() {
@@ -13,7 +14,7 @@ export default function CreateNotes() {
     const [file, setFile] = useState('')
 
     const note = useSelector(state => state.noteSlice.updateNote)
-    // console.log('note',note);
+    console.log('note',note);
 
     const user = useSelector(state => state.authSlice.user)
     // console.log('user in createNote', user);
@@ -22,8 +23,17 @@ export default function CreateNotes() {
     useEffect(()=>{
         if (note) {
             setTitle(note.title)
-            setContent(note.Content)
+            setContent(note.content)
             setSubject(note.subject)
+            setFile(note.file)
+            // let updateNote ={
+            //     title:note.title,
+            //     content:note.content,
+            //     subject:note.subject,
+            //     file:note.file
+            // }
+            // console.log("note update",updateNote);
+            
 
         } else {
             setTitle("")
@@ -49,9 +59,9 @@ export default function CreateNotes() {
 
         }
         let noteUpdateData = {
-            uid: user.uid,
-            userName: user.name,
-            userProfileURL: user.profileURL,
+            // uid: user.uid,
+            userName: note.userName,
+            userProfileURL: note.userProfileURL,
             title,
             content,
             subject,
@@ -65,21 +75,31 @@ export default function CreateNotes() {
             subject,
             file,
         }
-        // console.log('data', data);
+        console.log('data', data);
+        const updateData = {
+            title,
+            content,
+            subject,
+        }
+        
         try {
-            const response = await CreateNotesSchema.validate(data)
-            if (response) {
-                 if (note) {
-                        dispatch(updateNote({ ...noteUpdateData, id: note.id }))
-                        return
-                    }
-                dispatch(createNote({ ...noteCreateData, file, setLoading }))
-                setTitle("")
-                setContent("")
-                setSubject("")
-                setFile("")
-            } else {
-                console.log('there is error');
+            
+            if (note){
+            const updateNoteResponse = await updateNoteSchema.validate(updateData)
+            if(updateNoteResponse){
+                dispatch(updateNote({ ...noteUpdateData, id: note.id }))
+                return
+            }else {
+                const createNoteResponse = await CreateNotesSchema.validate(data)
+                if(createNoteResponse){
+                    dispatch(createNote({ ...noteCreateData, file, setLoading }))
+                    setTitle("")
+                    setContent("")
+                    setSubject("")
+                    setFile("")
+                }
+                
+            }
             }
         } catch (error) {
             alert('Please fill required field correctly')

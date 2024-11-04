@@ -8,6 +8,7 @@ import * as yup from 'yup'
 export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loading,setLoading] = useState(false)
 
      // schema 
      const schema = yup.object().shape({
@@ -33,7 +34,7 @@ export default function Login() {
         }
       const response = await schema.validate(data)
       if(response){
-        dispatch(login(user))
+        dispatch(login({...user,setLoading}))
       }  
 
       }catch(error){
@@ -52,7 +53,7 @@ alert("Please fill the required field correctly")
  
   <input type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required/>
   <input type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)} required/>
-  <button className='button' onClick={handleLogin}>Login</button>
+  <button className='button' onClick={handleLogin}>{loading? <p>Loading...</p>:<p>Login</p>}</button>
 
 <div className="create-account">
   <p>Don't have an account? <Link to="/signup">Create account</Link></p>

@@ -86,3 +86,8 @@
         background-color: #ffffff;
         border: 1px solid  #333;
       }
+      .close-btn{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }

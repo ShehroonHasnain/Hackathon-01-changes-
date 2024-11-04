@@ -74,7 +74,9 @@ const dispatch = useDispatch()
               <textarea value={content} placeholder="Type here..." onChange={(e) => setContent(e.target.value)} id="content" />
                 <button onClick={addCommentHandler} className='simple-btn'>Add</button>
               </div>
+              <div className='close-btn'>
               <button onClick={HandleClick} className='simple-btn-o'>Close</button>
+              </div>
           </div>
       
     </div>

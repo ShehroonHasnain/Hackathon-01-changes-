@@ -11,3 +11,10 @@ export const CreateNotesSchema = yup.object().shape({
       ).required('file is required'),
 
 })
+
+export const updateNoteSchema = yup.object().shape({
+  title:yup.string().required('title is required'),
+    content:yup.string().required('content is requird'),
+    subject:yup.string().required('subject is required'),
+
+})

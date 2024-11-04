@@ -55,6 +55,7 @@ export const logout= createAsyncThunk(
 export const login = createAsyncThunk(
     'auth/login',
     async (user) => {
+        user.setLoading(true)
 
         try {
             console.log("user",user);
@@ -65,11 +66,12 @@ export const login = createAsyncThunk(
          const docSnap = await getDoc(doc(db, "notesAppUsers",userCredential.user.uid))
          const dbUser = docSnap?.data()
          console.log("dbUser",dbUser);
-         
+         user.setLoading(false)
          return dbUser
 
 
         } catch (error) {
+            user.setLoading(false)
              console.log("error",error);
              
         }
